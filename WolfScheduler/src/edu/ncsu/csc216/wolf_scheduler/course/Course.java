@@ -7,31 +7,16 @@ package edu.ncsu.csc216.wolf_scheduler.course;
  *         object contains setter and getter methods contains overrides of
  *         equals(), hashCode(), and toString()
  */
-public class Course {      
-	
-	
-	
-	
-	
-	
+public class Course extends Activity {      
 
 	/** Course's name. */
 	private String name;
-	/** Course's title. */
-	private String title;
 	/** Course's section. */
 	private String section;
 	/** Course's credit hours */
 	private int credits;
 	/** Course's instructor */
 	private String instructorId;
-	/** Course's meeting days */
-	private String meetingDays;
-	/** Course's starting time */
-	private int startTime;
-	/** Course's ending time */
-	private int endTime;
-
 	/**
 	 * Constructor for a Course object
 	 * 
@@ -54,13 +39,11 @@ public class Course {
 	 */
 	public Course(String name, String title, String section, int credits, String instructorId, String meetingDays,
 			int startTime, int endTime) {
+		super(title, meetingDays, startTime, endTime);
 		setName(name);
-		setTitle(title);
 		setSection(section);
 		setCredits(credits);
 		setInstructorId(instructorId);
-		setMeetingDays(meetingDays);
-		setCourseTime(startTime, endTime);
 	}
 
 	/**
@@ -102,24 +85,6 @@ public class Course {
 			throw new IllegalArgumentException();
 		}
 		this.name = name;
-	}
-
-	/**gets title for a course
-	 * @return the title
-	 */
-	public String getTitle() {
-		return title;
-	}
-
-	/**sets title for a course, unless null or empty
-	 * @param title
-	 *            the title to set
-	 */
-	public void setTitle(String title) {
-		if (title == null || title.equals("")) {
-			throw new IllegalArgumentException();
-		}
-		this.title = title;
 	}
 
 	/**gets the section number for a course
@@ -187,172 +152,51 @@ public class Course {
 		this.instructorId = instructorId;
 	}
 
-	/**gets the days a course meets
-	 * @return meetingDays
+	/**
+	 * Returns a comma separated value String of all Course fields.
+	 * @return String representation of Course
 	 */
-	public String getMeetingDays() {
-		return meetingDays;
+	@Override
+	public String toString() {
+		if (getMeetingDays().equals("A")) {
+			return name + "," + getTitle() + "," + section + "," + credits + "," + instructorId + "," + getMeetingDays();
+		}
+		return name + "," + getTitle() + "," + section + "," + credits + "," + instructorId + "," + getMeetingDays() + ","
+				+ getStartTime() + "," + getEndTime();
 	}
 
-	/**sets the days a course meets, unless empty,
-	 * must be composed of characters A,M,T,W,H, or F,
-	 * and if A, then the length must be one
-	 * @param meetingDays
-	 *            the meetingDays to set
-	 */
-	public void setMeetingDays(String meetingDays) {
-		if (meetingDays == null) {
-			throw new IllegalArgumentException();
-		}
-		if (!meetingDays.toUpperCase().matches("[AMTWHF]+")) {
-			throw new IllegalArgumentException();
-		}
-		if (meetingDays.toUpperCase().contains("A") && meetingDays.length() != 1) {
-			throw new IllegalArgumentException();
-		}
-
-		this.meetingDays = meetingDays;
-	}
-
-	/**Returns a string with the days and times a course takes place.
-	 * Converts the military times into 12-hour, adds "am" and "pm".
-	 * @return String A string describing the days a course meets
-	 */
-	public String getMeetingString() {
-		String days = getMeetingDays();
-		if (days.equals("A")) {
-			return "Arranged";
-		}
-
-		int milTimeStart = getStartTime();
-		int startHours = milTimeStart / 100;
-		int startMinutes = milTimeStart % 100;
-		String startTimeNew = "";
-
-		if (startHours < 12) {
-			startTimeNew = startHours + ":" + String.format("%02d", startMinutes) + "AM";
-		}
-		if (startHours == 12) {
-			startTimeNew = startHours + ":" + String.format("%02d", startMinutes) + "PM";
-		}
-		if (startHours > 12) {
-			startHours = startHours - 12;
-			startTimeNew = startHours + ":" + String.format("%02d", startMinutes) + "PM";
-		}
-
-		int milTimeEnd = getEndTime();
-		int endHours = milTimeEnd / 100;
-		int endMinutes = milTimeEnd % 100;
-		String endTimeNew = "";
-
-		if (endHours < 12) {
-			endTimeNew = endHours + ":" + String.format("%02d", endMinutes) + "AM";
-		}
-		if (endHours == 12) {
-			endTimeNew = endHours + ":" + String.format("%02d", endMinutes) + "PM";
-		}
-		if (endHours > 12) {
-			endHours = endHours - 12;
-			endTimeNew = endHours + ":" + String.format("%02d", endMinutes) + "PM";
-		}
-
-		return days + " " + startTimeNew + "-" + endTimeNew;
-	}
-
-	/**gets the time a course starts
-	 * @return the startTime
-	 */
-	public int getStartTime() {
-		return startTime;
-	}
-
-	/**gets the time a course ends
-	 * @return the endTime
-	 */
-	public int getEndTime() {
-		return endTime;
-	}
-
-	/**sets the time a course starts and ends.
-	 * Checks for valid times and makes sure endTime
-	 * is after startTime
-	 * @param startTime
-	 *            the startTime to set
-	 * @param endTime the endTime to set
-	 */
-	public void setCourseTime(int startTime, int endTime) {
-		if (startTime < 0 || startTime > 2359) {
-			startTime = 0;
-			throw new IllegalArgumentException();
-		}
-		if (endTime < 0 || endTime > 2359) {
-			endTime = 0;
-			throw new IllegalArgumentException();
-		}
-		if ((startTime % 100) - 60 >= 0) {
-			throw new IllegalArgumentException();
-		}
-		if ((endTime % 100) - 60 >= 0) {
-			throw new IllegalArgumentException();
-		}
-		if (endTime < startTime) {
-			throw new IllegalArgumentException();
-		}
-		if (this.meetingDays.toUpperCase().contains("A") && (startTime != 0 || endTime != 0)) {
-			throw new IllegalArgumentException();
-		}
-
-		this.startTime = startTime;
-		this.endTime = endTime;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
+	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
+		int result = super.hashCode();
 		result = prime * result + credits;
-		result = prime * result + endTime;
 		result = prime * result + ((instructorId == null) ? 0 : instructorId.hashCode());
-		result = prime * result + ((meetingDays == null) ? 0 : meetingDays.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((section == null) ? 0 : section.hashCode());
-		result = prime * result + startTime;
-		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		Course other = (Course) obj;
 		if (credits != other.credits)
 			return false;
-		if (endTime != other.endTime)
-			return false;
 		if (instructorId == null) {
 			if (other.instructorId != null)
 				return false;
 		} else if (!instructorId.equals(other.instructorId))
-			return false;
-		if (meetingDays == null) {
-			if (other.meetingDays != null)
-				return false;
-		} else if (!meetingDays.equals(other.meetingDays))
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -364,27 +208,23 @@ public class Course {
 				return false;
 		} else if (!section.equals(other.section))
 			return false;
-		if (startTime != other.startTime)
-			return false;
-		if (title == null) {
-			if (other.title != null)
-				return false;
-		} else if (!title.equals(other.title))
-			return false;
 		return true;
 	}
 
-	/**
-	 * Returns a comma separated value String of all Course fields.
-	 * @return String representation of Course
-	 */
 	@Override
-	public String toString() {
-		if (meetingDays.equals("A")) {
-			return name + "," + title + "," + section + "," + credits + "," + instructorId + "," + meetingDays;
-		}
-		return name + "," + title + "," + section + "," + credits + "," + instructorId + "," + meetingDays + ","
-				+ startTime + "," + endTime;
+	public String[] getShortDisplayArray() {
+
+		String[] shortArray = {this.getName(), this.getSection(), this.getTitle(), this.getMeetingDays()};
+		
+		return shortArray;
+	}
+
+	@Override
+	public String[] getLongDisplayArray() {
+		
+		String[] longArray = {this.getName(), this.getSection(), this.getTitle(), String.valueOf(this.getCredits()), this.getInstructorId(), this.getMeetingDays(), ""};
+		
+		return longArray;
 	}
 
 }

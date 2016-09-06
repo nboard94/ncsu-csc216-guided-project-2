@@ -12,6 +12,7 @@ import java.util.Scanner;
 import org.junit.Before;
 import org.junit.Test;
 
+import edu.ncsu.csc216.wolf_scheduler.course.Activity;
 import edu.ncsu.csc216.wolf_scheduler.course.Course;
 
 /**
@@ -89,7 +90,7 @@ public class WolfSchedulerTest {
 		assertNull(ws.getCourseFromCatalog("CSC492", "001"));
 		
 		//Attempt to get a course that does exist
-		Course c = new Course(NAME, TITLE, SECTION, CREDITS, INSTRUCTOR_ID, MEETING_DAYS, START_TIME, END_TIME);
+		Activity c = new Course(NAME, TITLE, SECTION, CREDITS, INSTRUCTOR_ID, MEETING_DAYS, START_TIME, END_TIME);
 		assertEquals(c, ws.getCourseFromCatalog("CSC216", "001"));
 	}
 	
@@ -105,7 +106,7 @@ public class WolfSchedulerTest {
 		assertEquals(0, ws.getScheduledCourses().length);
 		assertEquals(0, ws.getFullScheduledCourses().length);
 		
-		Course c = new Course(NAME, TITLE, SECTION, CREDITS, INSTRUCTOR_ID, MEETING_DAYS, START_TIME, END_TIME);
+		Activity c = new Course(NAME, TITLE, SECTION, CREDITS, INSTRUCTOR_ID, MEETING_DAYS, START_TIME, END_TIME);
 		
 		//Attempt to add a course that does exist
 		assertTrue(ws.addCourse(NAME, SECTION));
