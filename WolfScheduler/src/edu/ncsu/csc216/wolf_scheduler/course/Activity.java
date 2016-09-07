@@ -15,7 +15,7 @@ abstract class Activity {
 		super();
 		setTitle(title);
 		setMeetingDays(meetingDays);
-		setCourseTime(startTime, endTime);
+		setActivityTime(startTime, endTime);
 		
 	}
 
@@ -130,7 +130,7 @@ abstract class Activity {
 	 *            the startTime to set
 	 * @param endTime the endTime to set
 	 */
-	public void setCourseTime(int startTime, int endTime) {
+	public void setActivityTime(int startTime, int endTime) {
 		if (startTime < 0 || startTime > 2359) {
 			startTime = 0;
 			throw new IllegalArgumentException();
