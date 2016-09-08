@@ -478,7 +478,7 @@ public class CourseTest {
 		
 		//Test that setting the start time to 2400 doesn't change the start time (or anything else).
 		try {
-			c.setCourseTime(2400, 1445);
+			c.setActivityTime(2400, 1445);
 			fail();
 		} catch (IllegalArgumentException e) {
 			assertEquals(NAME, c.getName());
@@ -493,7 +493,7 @@ public class CourseTest {
 		
 		//Test that setting the start time to 1360 doesn't change the start time (or anything else).
 		try {
-			c.setCourseTime(1360, 1445);
+			c.setActivityTime(1360, 1445);
 			fail();
 		} catch (IllegalArgumentException e) {
 			assertEquals(NAME, c.getName());
@@ -508,7 +508,7 @@ public class CourseTest {
 		
 		//Test that setting the start time to -1 doesn't change the start time (or anything else).
 		try {
-			c.setCourseTime(-1, 1445);
+			c.setActivityTime(-1, 1445);
 			fail();
 		} catch (IllegalArgumentException e) {
 			assertEquals(NAME, c.getName());
@@ -523,7 +523,7 @@ public class CourseTest {
 		
 		//Test that setting the start time to 2400 doesn't change the start time (or anything else).
 		try {
-			c.setCourseTime(1330, 2400);
+			c.setActivityTime(1330, 2400);
 			fail();
 		} catch (IllegalArgumentException e) {
 			assertEquals(NAME, c.getName());
@@ -538,7 +538,7 @@ public class CourseTest {
 		
 		//Test that setting the start time to 1360 doesn't change the start time (or anything else).
 		try {
-			c.setCourseTime(1330, 1360);
+			c.setActivityTime(1330, 1360);
 			fail();
 		} catch (IllegalArgumentException e) {
 			assertEquals(NAME, c.getName());
@@ -553,7 +553,7 @@ public class CourseTest {
 		
 		//Test that setting the start time to -1 doesn't change the start time (or anything else).
 		try {
-			c.setCourseTime(1330, -1);
+			c.setActivityTime(1330, -1);
 			fail();
 		} catch (IllegalArgumentException e) {
 			assertEquals(NAME, c.getName());
@@ -568,7 +568,7 @@ public class CourseTest {
 		
 		//Test that having the start time after the end time doesn't change the values.
 		try {
-			c.setCourseTime(1445, 1330);
+			c.setActivityTime(1445, 1330);
 			fail();
 		} catch (IllegalArgumentException e) {
 			assertEquals(NAME, c.getName());
@@ -582,7 +582,7 @@ public class CourseTest {
 		}
 		
 		//Valid set of start time
-		c.setCourseTime(1350, 1445);
+		c.setActivityTime(1350, 1445);
 		assertEquals(NAME, c.getName());
 		assertEquals(TITLE, c.getTitle());
 		assertEquals(SECTION, c.getSection());
@@ -593,7 +593,7 @@ public class CourseTest {
 		assertEquals(END_TIME, c.getEndTime());
 		
 		//Valid set of end time
-		c.setCourseTime(1350, 1526);
+		c.setActivityTime(1350, 1526);
 		assertEquals(NAME, c.getName());
 		assertEquals(TITLE, c.getTitle());
 		assertEquals(SECTION, c.getSection());

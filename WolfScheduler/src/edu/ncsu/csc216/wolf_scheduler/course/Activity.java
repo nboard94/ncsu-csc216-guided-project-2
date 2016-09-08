@@ -1,11 +1,11 @@
 package edu.ncsu.csc216.wolf_scheduler.course;
 
-abstract class Activity {
+public abstract class Activity {
 
 	/** Course's title. */
 	private String title;
 	/** Course's meeting days */
-	private String meetingDays;
+	protected String meetingDays;
 	/** Course's starting time */
 	private int startTime;
 	/** Course's ending time */

@@ -21,7 +21,19 @@ public class Event extends Activity {
 		this.setWeeklyRepeat(weeklyRepeat);
 		this.setEventDetails(eventDetails);
 	}
+	
+	@Override
+	public void setMeetingDays(String meetingDays) {
+		if (meetingDays == null) {
+			throw new IllegalArgumentException();
+		}
+		if (!meetingDays.toUpperCase().matches("[USMTWHF]+")) {
+			throw new IllegalArgumentException();
+		}
 
+		this.meetingDays = meetingDays;
+	}
+	
 	/**
 	 * @return the weeklyRepeat
 	 */

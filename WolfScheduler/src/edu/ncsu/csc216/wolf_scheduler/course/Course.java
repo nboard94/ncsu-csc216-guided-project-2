@@ -164,6 +164,21 @@ public class Course extends Activity {
 		return name + "," + getTitle() + "," + section + "," + credits + "," + instructorId + "," + getMeetingDays() + ","
 				+ getStartTime() + "," + getEndTime();
 	}
+	
+	@Override
+	public void setMeetingDays(String meetingDays) {
+		if (meetingDays == null) {
+			throw new IllegalArgumentException();
+		}
+		if (!meetingDays.toUpperCase().matches("[AMTWHF]+")) {
+			throw new IllegalArgumentException();
+		}
+		if (meetingDays.toUpperCase().contains("A") && meetingDays.length() != 1) {
+			throw new IllegalArgumentException();
+		}
+	
+		this.meetingDays = meetingDays;
+	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()

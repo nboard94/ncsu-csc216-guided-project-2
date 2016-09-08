@@ -85,7 +85,7 @@ public class CourseRecordIO {
 			c.setMeetingDays(lineScan.next());
 			
 			if (lineScan.hasNextInt()) {
-				c.setCourseTime(lineScan.nextInt(), lineScan.nextInt());
+				c.setActivityTime(lineScan.nextInt(), lineScan.nextInt());
 			}
 			
 			lineScan.close();
