@@ -2,8 +2,6 @@ package edu.ncsu.csc216.wolf_scheduler.io;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -97,23 +95,6 @@ public class CourseRecordIO {
 			throw new IllegalArgumentException();
 		}
 		
-	}
-
-	/**
-     * Writes the given list of Courses to 
-     * @param fileName fileName to write courses to
-     * @param courses array containing course objects
-     * @throws IOException if there is an issue writing to the output file
-     */
-	public static void writeCourseRecords(String fileName, ArrayList<Course> courses) throws IOException {
-		
-		PrintStream fileWriter = new PrintStream(new File(fileName));
-
-		for (int i = 0; i < courses.size(); i++) {
-		    fileWriter.println(courses.get(i).toString());
-		}
-
-		fileWriter.close();
 	}
 	
 	

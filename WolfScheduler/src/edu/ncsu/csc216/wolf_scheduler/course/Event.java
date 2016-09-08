@@ -16,7 +16,6 @@ public class Event extends Activity {
 	 * 
 	 */
 	public Event(String title, String meetingDays, int startTime, int endTime, int weeklyRepeat, String eventDetails) {
-		// TODO Auto-generated constructor stub
 		super(title, meetingDays, startTime, endTime);
 		this.setWeeklyRepeat(weeklyRepeat);
 		this.setEventDetails(eventDetails);
@@ -87,7 +86,6 @@ public class Event extends Activity {
 	 */
 	@Override
 	public String getMeetingString() {
-		// TODO Auto-generated method stub
 		return super.getMeetingString() + " (every " + getWeeklyRepeat() + " weeks)";
 	}
 
@@ -96,8 +94,6 @@ public class Event extends Activity {
 	 */
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		//title,meetingDays,startTime,endTime,weeklyRepeat,details
 		return this.getTitle() + "," + this.getMeetingDays() + "," + this.getStartTime() + "," + this.getEndTime() + "," + this.getWeeklyRepeat() + "," + this.getEventDetails();
 	}
 

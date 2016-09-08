@@ -14,6 +14,7 @@ import java.util.Scanner;
 import org.junit.Before;
 import org.junit.Test;
 
+import edu.ncsu.csc216.wolf_scheduler.course.Activity;
 import edu.ncsu.csc216.wolf_scheduler.course.Course;
 import edu.ncsu.csc216.wolf_scheduler.io.CourseRecordIO;
 
@@ -94,13 +95,13 @@ public class CourseRecordIOTest {
 	 */
 	@Test
 	public void testWriteCourseRecords() {
-		ArrayList<Course> courses = new ArrayList<Course>();
+		ArrayList<Activity> courses = new ArrayList<Activity>();
 		courses.add(new Course("CSC116", "Intro to Programming - Java", "003", 3, "spbalik", "MW", 1250, 1440));
 		courses.add(new Course("CSC216", "Programming Concepts - Java", "001", 4, "sesmith5", "MW", 1330, 1445));
 		courses.add(new Course("CSC216", "Programming Concepts - Java", "601", 4, "jep", "A"));
 		
 		try {
-			CourseRecordIO.writeCourseRecords("test-files/actual_course_records.txt", courses);
+			ActivityRecordIO.writeActivityRecords("test-files/actual_course_records.txt", courses);
 		} catch (IOException e) {
 			fail("Cannot write to course records file");
 		}

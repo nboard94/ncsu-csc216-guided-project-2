@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import edu.ncsu.csc216.wolf_scheduler.course.Course;
+import edu.ncsu.csc216.wolf_scheduler.io.ActivityRecordIO;
 import edu.ncsu.csc216.wolf_scheduler.io.CourseRecordIO;
 
 /**Manages interactions with a course catalog or a student's schedule
@@ -205,7 +206,7 @@ public class WolfScheduler {
 	 */
 	public void exportSchedule(String fileName) {
 		try {
-			CourseRecordIO.writeCourseRecords(fileName, schedule);
+			ActivityRecordIO.writeActivityRecords(fileName, schedule);
 		} catch (IOException e) {
 			throw new IllegalArgumentException("The file cannot be saved.");
 		}
