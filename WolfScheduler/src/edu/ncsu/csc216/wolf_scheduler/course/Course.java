@@ -242,4 +242,13 @@ public class Course extends Activity {
 		return longArray;
 	}
 
+	@Override
+	public boolean isDuplicate(Activity activity) {
+	
+		if (name.equals(((Course) activity).getName())) {
+			return true;
+		}
+		return false;
+	}
+
 }

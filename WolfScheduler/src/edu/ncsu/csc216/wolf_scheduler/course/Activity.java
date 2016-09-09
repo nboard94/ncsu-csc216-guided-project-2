@@ -202,5 +202,8 @@ public abstract class Activity {
 			return false;
 		return true;
 	}
+	
+	public abstract boolean isDuplicate(Activity activity);
+
 
 }

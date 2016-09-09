@@ -360,7 +360,7 @@ public class WolfSchedulerGUI extends JFrame implements ActionListener {
 				if (row == -1) {
 					JOptionPane.showMessageDialog(WolfSchedulerGUI.this, "No item selected in the schedule.");
 				} else {
-					scheduler.removeCourse(tableSchedule.getValueAt(row, 0).toString(), tableSchedule.getValueAt(row, 1).toString());
+					scheduler.removeActivity(-1);
 				}
 				updateTables();
 			} else if (e.getSource() == btnReset) {
@@ -484,7 +484,7 @@ public class WolfSchedulerGUI extends JFrame implements ActionListener {
 				if (catalog) {
 					data = scheduler.getCourseCatalog();
 				} else {
-					data = scheduler.getScheduledCourses();
+					data = scheduler.getScheduledActivities();
 				}
 			}
 		}
@@ -662,7 +662,7 @@ public class WolfSchedulerGUI extends JFrame implements ActionListener {
 			 * Updates the given model with {@link Course} information from the {@link WolfScheduler}.
 			 */
 			private void updateData() {
-				data = scheduler.getFullScheduledCourses();
+				data = scheduler.getFullScheduledActivities();
 			}
 		}
 		
