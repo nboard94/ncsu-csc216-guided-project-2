@@ -245,8 +245,10 @@ public class Course extends Activity {
 	@Override
 	public boolean isDuplicate(Activity activity) {
 	
+		if (activity instanceof Course) {
 		if (name.equals(((Course) activity).getName())) {
 			return true;
+		}
 		}
 		return false;
 	}

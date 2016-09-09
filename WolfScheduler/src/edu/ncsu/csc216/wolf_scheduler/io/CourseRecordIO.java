@@ -14,17 +14,7 @@ import edu.ncsu.csc216.wolf_scheduler.course.Course;
  * @author Sarah Heckman
  */
 public class CourseRecordIO {
-//	
-//	public static void main(String[] args) throws FileNotFoundException{
-//		String validTestFile = "test-files/invalid_course_records.txt";
-//		ArrayList<Course> courses = readCourseRecords(validTestFile);
-//		System.out.println(courses);
-//		System.out.println(courses.size());
-//		
-//
-//	}
-	
-	
+
 	 /**
      * Reads course records from a file and generates a list of valid Courses.  Any invalid
      * Courses are ignored.  If the file to read cannot be found or the permissions are incorrect
@@ -39,7 +29,6 @@ public class CourseRecordIO {
 	    while (fileReader.hasNextLine()) {
 	        try {
 	            Course course = readCourse(fileReader.nextLine());
-	            System.out.println(course);
 	            boolean duplicate = false;
 	            for (int i = 0; i < courses.size(); i++) {
 	                Course c = courses.get(i);

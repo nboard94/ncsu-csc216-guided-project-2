@@ -104,21 +104,30 @@ public class WolfScheduler {
 	}
 
 
+	/** adds an event to the schedule 
+	 * @param eventTitle
+	 * @param eventMeetingDays
+	 * @param eventStartTime
+	 * @param eventEndTime
+	 * @param eventWeeklyRepeat
+	 * @param eventDetails
+	 * @return
+	 */
 	public boolean addEvent(String eventTitle, String eventMeetingDays, int eventStartTime, int eventEndTime,
 			int eventWeeklyRepeat, String eventDetails) {
 		
 		Event eventToAdd = new Event(eventTitle, eventMeetingDays, eventStartTime, eventEndTime, eventWeeklyRepeat, eventDetails);
-		Event currentEvent;
-	
+		
 		if (schedule.size() < 1) {
 			schedule.add(eventToAdd);
 			return true;
 		}
 		
+		
+
 		for (int i = 0; i < schedule.size(); i++) {
-			if (schedule.get(i) instanceof Event) {
-				currentEvent = (Event) schedule.get(i);
-				if (currentEvent.isDuplicate(eventToAdd)) {
+
+				if (schedule.get(i).isDuplicate(eventToAdd)) {
 					throw new IllegalArgumentException("You have already created an event called " + eventTitle);
 				}
 				else {
@@ -126,7 +135,7 @@ public class WolfScheduler {
 					return true;
 				}
 				
-			}
+			
 		}
 		
 		return false;
@@ -140,7 +149,11 @@ public class WolfScheduler {
 	 */
 	public boolean removeActivity(int idx) {
 		if (!schedule.isEmpty() ) {
+			if (idx > (schedule.size() - 1)) {
+				return false;
+			}		
 			schedule.remove(idx);
+			return true;
 		}
 		
 		return false;
@@ -189,14 +202,22 @@ public class WolfScheduler {
 			return scheduleArray;
 		}
 		
-		Course currentCourse;
+		Activity currentActivity;
 		for (int i = 0; i < schedule.size(); i++) {
-			currentCourse = ((Course)schedule.get(i));
-			scheduleArray[i][0] = currentCourse.getName();
-			scheduleArray[i][1] = currentCourse.getSection();
-			scheduleArray[i][2] = currentCourse.getTitle();
+			currentActivity = schedule.get(i);
+			if (currentActivity instanceof Course) {
+				scheduleArray[i][0] = ((Course) currentActivity).getName();
+				scheduleArray[i][1] = ((Course) currentActivity).getSection();
+				scheduleArray[i][2] = currentActivity.getTitle();
+			}
+			
+			else if (currentActivity instanceof Event) {
+				scheduleArray[i][0] = currentActivity.getTitle();
+				scheduleArray[i][1] = currentActivity.getMeetingString();
+				scheduleArray[i][2] = ((Event) currentActivity).getEventDetails();
+			}
 		}
-		
+	
 		return scheduleArray;
 	}
 

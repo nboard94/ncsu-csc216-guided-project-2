@@ -99,16 +99,13 @@ public class Event extends Activity {
 
 	@Override
 	public boolean isDuplicate(Activity activity) {
-//		if 	(this.getTitle().equals(activity.getTitle()) &&
-//			this.getMeetingDays().equals(activity.getMeetingDays()) &&
-//			this.getStartTime() == activity.getStartTime() &&
-//			this.getEndTime() == activity.getEndTime() &&
-//			this.getWeeklyRepeat() == ((Event) activity).getWeeklyRepeat() &&
-//			this.getEventDetails().equals(((Event) activity).getEventDetails())) {
-//			
-//				return true;
-//		}
-		return true;
+		if (activity instanceof Event) {
+			if (this.getTitle().equals(activity.getTitle())) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 
 }

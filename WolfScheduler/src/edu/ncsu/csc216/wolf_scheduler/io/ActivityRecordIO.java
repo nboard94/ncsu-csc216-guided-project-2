@@ -7,6 +7,10 @@ import java.util.ArrayList;
 
 import edu.ncsu.csc216.wolf_scheduler.course.Activity;
 
+/** writes any abstract activity, event or course, to a file
+ * @author NBoar
+ *
+ */
 public class ActivityRecordIO {
 
 	public ActivityRecordIO() {
