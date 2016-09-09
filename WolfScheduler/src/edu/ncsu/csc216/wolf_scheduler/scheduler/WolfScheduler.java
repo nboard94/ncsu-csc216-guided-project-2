@@ -66,7 +66,7 @@ public class WolfScheduler {
 	public boolean addCourse(String name, String section) {
 		
 		Activity currentCourse;
-		Course courseToAdd = new Course (name, "title", section, 3, "id", "A", 0, 0);
+		Course courseToAdd = new Course (name, "title", section, 3, "id", "MWF");
 
 		for (int i = 0; i < catalog.size(); i++) {
 			currentCourse = catalog.get(i);
@@ -130,12 +130,10 @@ public class WolfScheduler {
 				if (schedule.get(i).isDuplicate(eventToAdd)) {
 					throw new IllegalArgumentException("You have already created an event called " + eventTitle);
 				}
-				else {
+				else if (!schedule.get(i).isDuplicate(eventToAdd)) {
 					schedule.add(eventToAdd);
 					return true;
 				}
-				
-			
 		}
 		
 		return false;
