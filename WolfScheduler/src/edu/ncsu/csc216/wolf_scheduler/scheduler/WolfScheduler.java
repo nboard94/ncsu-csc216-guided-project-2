@@ -57,11 +57,12 @@ public class WolfScheduler {
 		return null;
 	}
 
-
-	/**Adds a course to a schedule
-	 * @param name Name of course to add to schedule
-	 * @param section Section of course to add to schedule
-	 * @return true If the specified course can be added to the schedule
+	/** adds a course to the schedule if it can be matched to a course in the catalog
+	 * and isn't a duplicate of one already in the schedule
+	 * @param name
+	 * @param section
+	 * @throws IllegalArgumentException if that course is already in the schedule
+	 * @return false if the course can't be added
 	 */
 	public boolean addCourse(String name, String section) {
 		
@@ -102,16 +103,17 @@ public class WolfScheduler {
 	}
 
 
-	/** adds an event to the schedule 
-	 * @param eventTitle
-	 * @param eventMeetingDays
-	 * @param eventStartTime
-	 * @param eventEndTime
-	 * @param eventWeeklyRepeat
-	 * @param eventDetails
-	 * @return
-	 */
-	public boolean addEvent(String eventTitle, String eventMeetingDays, int eventStartTime, int eventEndTime,
+ /** adds event to the catalog as long as it isn't a duplicate
+ * @param eventTitle
+ * @param eventMeetingDays
+ * @param eventStartTime
+ * @param eventEndTime
+ * @param eventWeeklyRepeat
+ * @param eventDetails
+ * @throws IllegalArgumentException if event is a duplicate
+ * @return alse if event can't be added
+ */
+boolean addEvent(String eventTitle, String eventMeetingDays, int eventStartTime, int eventEndTime,
 			int eventWeeklyRepeat, String eventDetails) {
 		
 		Event eventToAdd = new Event(eventTitle, eventMeetingDays, eventStartTime, eventEndTime, eventWeeklyRepeat, eventDetails);
@@ -140,8 +142,9 @@ public class WolfScheduler {
 
 
 	/**Removes a course from a schedule
-	 * @param idx TODO
-	 * @return true If course can be removed
+	 * @param idx index of activity to remove in the schedule
+	 * @return true If event can be removed
+	 * @return false if event can't be removed
 	 */
 	public boolean removeActivity(int idx) {
 		if (!schedule.isEmpty() ) {
@@ -157,7 +160,7 @@ public class WolfScheduler {
 
 
 	/**
-	 * Resets a schedule by initializing and empty ArrayList of Courses
+	 * Resets a schedule by initializing and empty ArrayList of activities
 	 * and sets schedule to that empty ArrayList
 	 */
 	public void resetSchedule() {
@@ -188,8 +191,8 @@ public class WolfScheduler {
 		return catalogArray;
 	}
 
-	/**Retrieves scheduled courses
-	 * @return scheduleArray all scheduled courses
+	/**Retrieves scheduled activities
+	 * @return scheduleArray all scheduled activities
 	 */
 	public String[][] getScheduledActivities() {
 		String[][] scheduleArray = new String[schedule.size()][3];
@@ -217,8 +220,8 @@ public class WolfScheduler {
 		return scheduleArray;
 	}
 
-	/**Retrieves all information for scheduled courses
-	 * @return scheduleArray detailed version of all scheduled courses
+	/**Retrieves all information for scheduled activities
+	 * @return scheduleArray detailed version of all scheduled activities
 	 */
 	public String[][] getFullScheduledActivities() {
 		String[][] scheduleArray = new String[schedule.size()][7];
@@ -256,7 +259,7 @@ public class WolfScheduler {
 		return scheduleArray;
 	}
 
-	/**Sets the title
+	/**Sets the title of the schedule
 	 * @param title What to set the title to
 	 * @throws IllegalArgumentException The title can't be null
 	 */

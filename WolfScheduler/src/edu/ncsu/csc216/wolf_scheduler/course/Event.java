@@ -4,16 +4,26 @@
 package edu.ncsu.csc216.wolf_scheduler.course;
 
 /**
- * @author NBoar
- *
+ * Description of Event
+ * @author Nick Board
+ *			class for a course objects contains fields for event
+ *         object contains setter and getter methods contains overrides of
+ *         equals(), hashCode(), and toString().  Abstracted from Activity class.
  */
 public class Event extends Activity {
 
+	/** Number of times that an event will repeat */
 	private int weeklyRepeat;
+	/** String of extra details about an event */
 	private String eventDetails;
 	
-	/**
-	 * 
+	/** Constructor for Event object with start and endtime
+	 * @param title
+	 * @param meetingDays
+	 * @param startTime
+	 * @param endTime
+	 * @param weeklyRepeat
+	 * @param eventDetails
 	 */
 	public Event(String title, String meetingDays, int startTime, int endTime, int weeklyRepeat, String eventDetails) {
 		super(title, meetingDays, startTime, endTime);
@@ -21,6 +31,9 @@ public class Event extends Activity {
 		this.setEventDetails(eventDetails);
 	}
 	
+	/* (non-Javadoc)
+	 * @see edu.ncsu.csc216.wolf_scheduler.course.Activity#setMeetingDays(java.lang.String)
+	 */
 	@Override
 	public void setMeetingDays(String meetingDays) {
 		if (meetingDays == null) {
@@ -33,15 +46,16 @@ public class Event extends Activity {
 		this.meetingDays = meetingDays;
 	}
 	
-	/**
+	/** returns the weeklyRepeat int
 	 * @return the weeklyRepeat
 	 */
 	public int getWeeklyRepeat() {
 		return weeklyRepeat;
 	}
 
-	/**
+	/** sets the weekly repeat int, must be between 1-4
 	 * @param weeklyRepeat the weeklyRepeat to set
+	 * @throws IllegalArgumentException if invalid repeat int, not 1-4
 	 */
 	public void setWeeklyRepeat(int weeklyRepeat) {
 		if (weeklyRepeat < 1 || weeklyRepeat > 4) {
@@ -51,15 +65,16 @@ public class Event extends Activity {
 		this.weeklyRepeat = weeklyRepeat;
 	}
 
-	/**
+	/** returns the eventDetails string
 	 * @return the eventDetails
 	 */
 	public String getEventDetails() {
 		return eventDetails;
 	}
 
-	/**
+	/**sets the eventDetails string for an event
 	 * @param eventDetails the eventDetails to set
+	 * @throws IllegalArgumentException eventDetails cannot be null
 	 */
 	public void setEventDetails(String eventDetails) {
 		if (eventDetails == null) {
@@ -69,12 +84,18 @@ public class Event extends Activity {
 		this.eventDetails = eventDetails;
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.ncsu.csc216.wolf_scheduler.course.Activity#getShortDisplayArray()
+	 */
 	@Override
 	public String[] getShortDisplayArray() {
 		String[] shortArray = { "", "", this.getTitle(), this.getMeetingString()};
 		return shortArray;
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.ncsu.csc216.wolf_scheduler.course.Activity#getLongDisplayArray()
+	 */
 	@Override
 	public String[] getLongDisplayArray() {
 		String[] longArray = {"", "", this.getTitle(), "", "", this.getMeetingString(), this.getEventDetails()};
@@ -97,6 +118,9 @@ public class Event extends Activity {
 		return this.getTitle() + "," + this.getMeetingDays() + "," + this.getStartTime() + "," + this.getEndTime() + "," + this.getWeeklyRepeat() + "," + this.getEventDetails();
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.ncsu.csc216.wolf_scheduler.course.Activity#isDuplicate(edu.ncsu.csc216.wolf_scheduler.course.Activity)
+	 */
 	@Override
 	public boolean isDuplicate(Activity activity) {
 

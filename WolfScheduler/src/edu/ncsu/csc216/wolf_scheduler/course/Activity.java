@@ -1,5 +1,11 @@
 package edu.ncsu.csc216.wolf_scheduler.course;
 
+/**
+ * Description of Course
+ * @author Nick Board
+ *			Abstract class that contains methods for both the
+ *			Course and Event classes.  
+ */
 public abstract class Activity {
 
 	/** Course's title. */
@@ -11,6 +17,12 @@ public abstract class Activity {
 	/** Course's ending time */
 	private int endTime;
 
+	/**Abstract Activity constructor
+	 * @param title
+	 * @param meetingDays
+	 * @param startTime
+	 * @param endTime
+	 */
 	public Activity(String title, String meetingDays, int startTime, int endTime) {
 		super();
 		setTitle(title);
@@ -19,14 +31,14 @@ public abstract class Activity {
 		
 	}
 
-	/**gets title for a course
+	/**gets title for an activity
 	 * @return the title
 	 */
 	public String getTitle() {
 		return title;
 	}
 
-	/**sets title for a course, unless null or empty
+	/**sets title for an activity, unless null or empty
 	 * @param title
 	 *            the title to set
 	 */
@@ -37,14 +49,14 @@ public abstract class Activity {
 		this.title = title;
 	}
 
-	/**gets the days a course meets
+	/**gets the days an activity meets
 	 * @return meetingDays
 	 */
 	public String getMeetingDays() {
 		return meetingDays;
 	}
 
-	/**sets the days a course meets, unless empty,
+	/**sets the days an activity meets, unless empty,
 	 * must be composed of characters A,M,T,W,H, or F,
 	 * and if A, then the length must be one
 	 * @param meetingDays
@@ -64,9 +76,9 @@ public abstract class Activity {
 		this.meetingDays = meetingDays;
 	}
 
-	/**Returns a string with the days and times a course takes place.
+	/**Returns a string with the days and times an activity takes place.
 	 * Converts the military times into 12-hour, adds "am" and "pm".
-	 * @return String A string describing the days a course meets
+	 * @return String A string describing the days an activity meets
 	 */
 	public String getMeetingString() {
 		String days = getMeetingDays();
@@ -109,21 +121,21 @@ public abstract class Activity {
 		return days + " " + startTimeNew + "-" + endTimeNew;
 	}
 
-	/**gets the time a course starts
+	/**gets the time an activity starts
 	 * @return the startTime
 	 */
 	public int getStartTime() {
 		return startTime;
 	}
 
-	/**gets the time a course ends
+	/**gets the time an activity ends
 	 * @return the endTime
 	 */
 	public int getEndTime() {
 		return endTime;
 	}
 
-	/**sets the time a course starts and ends.
+	/**sets the time an activity starts and ends.
 	 * Checks for valid times and makes sure endTime
 	 * is after startTime
 	 * @param startTime
@@ -156,8 +168,14 @@ public abstract class Activity {
 		this.endTime = endTime;
 	}
 	
+	/**
+	 * Abstract method header to make sure this method is in both Course and Event
+	 */
 	public abstract String[] getShortDisplayArray();
 	
+	/**
+	 * Abstract method header to make sure this method is in both Course and Event
+	 */
 	public abstract String[] getLongDisplayArray();
 
 	/* (non-Javadoc)
@@ -203,6 +221,9 @@ public abstract class Activity {
 		return true;
 	}
 	
+	/**
+	 * Abstract method header to make sure this method is in both Course and Event
+	 */
 	public abstract boolean isDuplicate(Activity activity);
 
 

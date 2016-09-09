@@ -5,7 +5,7 @@ package edu.ncsu.csc216.wolf_scheduler.course;
  * @author Nick Board
  *			class for a course objects contains fields for course
  *         object contains setter and getter methods contains overrides of
- *         equals(), hashCode(), and toString()
+ *         equals(), hashCode(), and toString().  Abstracted from Activity class.
  */
 public class Course extends Activity {      
 
@@ -165,6 +165,9 @@ public class Course extends Activity {
 				+ getStartTime() + "," + getEndTime();
 	}
 	
+	/* (non-Javadoc)
+	 * @see edu.ncsu.csc216.wolf_scheduler.course.Activity#setMeetingDays(java.lang.String)
+	 */
 	@Override
 	public void setMeetingDays(String meetingDays) {
 		if (meetingDays == null) {
@@ -226,6 +229,9 @@ public class Course extends Activity {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.ncsu.csc216.wolf_scheduler.course.Activity#getShortDisplayArray()
+	 */
 	@Override
 	public String[] getShortDisplayArray() {
 		String[] shortArray = {this.getName(), this.getSection(), this.getTitle(), this.getMeetingString()};
@@ -233,6 +239,9 @@ public class Course extends Activity {
 		return shortArray;
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.ncsu.csc216.wolf_scheduler.course.Activity#getLongDisplayArray()
+	 */
 	@Override
 	public String[] getLongDisplayArray() {
 		String[] longArray = {this.getName(), this.getSection(), this.getTitle(), String.valueOf(this.getCredits()), this.getInstructorId(), this.getMeetingString(), ""};
@@ -240,6 +249,9 @@ public class Course extends Activity {
 		return longArray;
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.ncsu.csc216.wolf_scheduler.course.Activity#isDuplicate(edu.ncsu.csc216.wolf_scheduler.course.Activity)
+	 */
 	@Override
 	public boolean isDuplicate(Activity activity) {
 		if (activity instanceof Course && name.equals(((Course) activity).getName())) {

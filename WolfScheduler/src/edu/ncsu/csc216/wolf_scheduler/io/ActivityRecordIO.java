@@ -13,13 +13,9 @@ import edu.ncsu.csc216.wolf_scheduler.course.Activity;
  */
 public class ActivityRecordIO {
 
-	public ActivityRecordIO() {
-		// TODO Auto-generated constructor stub
-	}
-
 	/**
-	 * Writes the given list of Courses to 
-	 * @param fileName fileName to write courses to
+	 * Writes the given list of activities to 
+	 * @param fileName fileName to write activities to
 	 * @param activities array containing course objects
 	 * @throws IOException if there is an issue writing to the output file
 	 */
