@@ -113,7 +113,7 @@ public class WolfScheduler {
  * @throws IllegalArgumentException if event is a duplicate
  * @return alse if event can't be added
  */
-boolean addEvent(String eventTitle, String eventMeetingDays, int eventStartTime, int eventEndTime,
+public boolean addEvent(String eventTitle, String eventMeetingDays, int eventStartTime, int eventEndTime,
 			int eventWeeklyRepeat, String eventDetails) {
 		
 		Event eventToAdd = new Event(eventTitle, eventMeetingDays, eventStartTime, eventEndTime, eventWeeklyRepeat, eventDetails);
