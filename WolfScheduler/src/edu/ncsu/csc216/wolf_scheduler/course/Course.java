@@ -228,27 +228,22 @@ public class Course extends Activity {
 
 	@Override
 	public String[] getShortDisplayArray() {
-
-		String[] shortArray = {this.getName(), this.getSection(), this.getTitle(), this.getMeetingDays()};
+		String[] shortArray = {this.getName(), this.getSection(), this.getTitle(), this.getMeetingString()};
 		
 		return shortArray;
 	}
 
 	@Override
 	public String[] getLongDisplayArray() {
-		
-		String[] longArray = {this.getName(), this.getSection(), this.getTitle(), String.valueOf(this.getCredits()), this.getInstructorId(), this.getMeetingDays(), ""};
+		String[] longArray = {this.getName(), this.getSection(), this.getTitle(), String.valueOf(this.getCredits()), this.getInstructorId(), this.getMeetingString(), ""};
 		
 		return longArray;
 	}
 
 	@Override
 	public boolean isDuplicate(Activity activity) {
-	
-		if (activity instanceof Course) {
-		if (name.equals(((Course) activity).getName())) {
+		if (activity instanceof Course && name.equals(((Course) activity).getName())) {
 			return true;
-		}
 		}
 		return false;
 	}

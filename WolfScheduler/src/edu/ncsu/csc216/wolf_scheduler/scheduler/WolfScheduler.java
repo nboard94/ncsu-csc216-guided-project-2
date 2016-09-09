@@ -70,14 +70,12 @@ public class WolfScheduler {
 
 		for (int i = 0; i < catalog.size(); i++) {
 			currentCourse = catalog.get(i);
-			if (currentCourse instanceof Course) {
-				if (((Course) currentCourse).getName().equals(name) && ((Course)currentCourse).getSection().equals(section)) {
-					courseToAdd.setTitle(currentCourse.getTitle());
-					courseToAdd.setCredits(((Course) currentCourse).getCredits());
-					courseToAdd.setInstructorId(((Course) currentCourse).getInstructorId());
-					courseToAdd.setMeetingDays(currentCourse.getMeetingDays());
-					courseToAdd.setActivityTime(currentCourse.getStartTime(), currentCourse.getEndTime());
-				}
+			if (currentCourse instanceof Course && ((Course) currentCourse).getName().equals(name) && ((Course)currentCourse).getSection().equals(section)) {
+				courseToAdd.setTitle(currentCourse.getTitle());
+				courseToAdd.setCredits(((Course) currentCourse).getCredits());
+				courseToAdd.setInstructorId(((Course) currentCourse).getInstructorId());
+				courseToAdd.setMeetingDays(currentCourse.getMeetingDays());
+				courseToAdd.setActivityTime(currentCourse.getStartTime(), currentCourse.getEndTime());
 			}
 		}
 			

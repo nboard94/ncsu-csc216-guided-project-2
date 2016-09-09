@@ -99,10 +99,9 @@ public class Event extends Activity {
 
 	@Override
 	public boolean isDuplicate(Activity activity) {
-		if (activity instanceof Event) {
-			if (this.getTitle().equals(activity.getTitle())) {
-				return true;
-			}
+
+		if (activity instanceof Event && this.getTitle().equals(activity.getTitle())) {
+			return true;
 		}
 		
 		return false;
