@@ -8,13 +8,13 @@ package edu.ncsu.csc216.wolf_scheduler.course;
  */
 public abstract class Activity {
 
-	/** Course's title. */
+	/** @inheritDoc */
 	private String title;
-	/** Course's meeting days */
+	/** @inheritDoc */
 	protected String meetingDays;
-	/** Course's starting time */
+	/** @inheritDoc */
 	private int startTime;
-	/** Course's ending time */
+	/** @inheritDoc */
 	private int endTime;
 
 	/**Abstract Activity constructor
@@ -31,16 +31,15 @@ public abstract class Activity {
 		
 	}
 
-	/**gets title for an activity
-	 * @return the title
+	/**
+	 * @inheritDoc
 	 */
 	public String getTitle() {
 		return title;
 	}
 
-	/**sets title for an activity, unless null or empty
-	 * @param title
-	 *            the title to set
+	/**
+	 * @inheritDoc
 	 */
 	public void setTitle(String title) {
 		if (title == null || title.equals("")) {
@@ -49,18 +48,15 @@ public abstract class Activity {
 		this.title = title;
 	}
 
-	/**gets the days an activity meets
-	 * @return meetingDays
+	/**
+	 * @inheritDoc
 	 */
 	public String getMeetingDays() {
 		return meetingDays;
 	}
 
-	/**sets the days an activity meets, unless empty,
-	 * must be composed of characters A,M,T,W,H, or F,
-	 * and if A, then the length must be one
-	 * @param meetingDays
-	 *            the meetingDays to set
+	/**
+	 * @inheritDoc
 	 */
 	public void setMeetingDays(String meetingDays) {
 		if (meetingDays == null) {

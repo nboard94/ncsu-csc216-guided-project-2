@@ -17,6 +17,7 @@ public class Course extends Activity {
 	private int credits;
 	/** Course's instructor */
 	private String instructorId;
+	
 	/**
 	 * Constructor for a Course object
 	 * 
