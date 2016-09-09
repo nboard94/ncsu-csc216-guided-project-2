@@ -8,13 +8,13 @@ package edu.ncsu.csc216.wolf_scheduler.course;
  */
 public abstract class Activity {
 
-	/** @inheritDoc */
+	/** Course's title. */
 	private String title;
-	/** @inheritDoc */
+	/** Course's meeting days */
 	protected String meetingDays;
-	/** @inheritDoc */
+	/** Course's starting time */
 	private int startTime;
-	/** @inheritDoc */
+	/** Course's ending time */
 	private int endTime;
 
 	/**Abstract Activity constructor
@@ -31,15 +31,16 @@ public abstract class Activity {
 		
 	}
 
-	/**
-	 * @inheritDoc
+	/**gets title for an activity
+	 * @return the title
 	 */
 	public String getTitle() {
 		return title;
 	}
 
-	/**
-	 * @inheritDoc
+	/**sets title for an activity, unless null or empty
+	 * @param title
+	 *            the title to set
 	 */
 	public void setTitle(String title) {
 		if (title == null || title.equals("")) {
@@ -48,15 +49,18 @@ public abstract class Activity {
 		this.title = title;
 	}
 
-	/**
-	 * @inheritDoc
+	/**gets the days an activity meets
+	 * @return meetingDays
 	 */
 	public String getMeetingDays() {
 		return meetingDays;
 	}
 
-	/**
-	 * @inheritDoc
+	/**sets the days an activity meets, unless empty,
+	 * must be composed of characters A,M,T,W,H, or F,
+	 * and if A, then the length must be one
+	 * @param meetingDays
+	 *            the meetingDays to set
 	 */
 	public void setMeetingDays(String meetingDays) {
 		if (meetingDays == null) {
@@ -187,6 +191,7 @@ public abstract class Activity {
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
+
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
