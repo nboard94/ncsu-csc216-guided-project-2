@@ -42,7 +42,7 @@ public class CourseRecordIO {
 	                courses.add(course);
 	            }
 	        } catch (IllegalArgumentException e) {
-
+	            //skip the line
 	        }
 	    }
 	    fileReader.close();
