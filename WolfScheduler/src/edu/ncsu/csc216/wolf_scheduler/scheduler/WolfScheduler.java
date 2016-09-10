@@ -59,8 +59,8 @@ public class WolfScheduler {
 
 	/** adds a course to the schedule if it can be matched to a course in the catalog
 	 * and isn't a duplicate of one already in the schedule
-	 * @param name
-	 * @param section
+	 * @param name name of the course to add
+	 * @param section section of the course to add
 	 * @throws IllegalArgumentException if that course is already in the schedule
 	 * @return false if the course can't be added
 	 */
