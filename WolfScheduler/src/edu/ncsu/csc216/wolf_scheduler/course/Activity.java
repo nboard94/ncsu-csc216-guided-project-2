@@ -18,10 +18,10 @@ public abstract class Activity {
 	private int endTime;
 
 	/**Abstract Activity constructor
-	 * @param title
-	 * @param meetingDays
-	 * @param startTime
-	 * @param endTime
+	 * @param title title of the activity
+	 * @param meetingDays meetingdays for the activity
+	 * @param startTime starting time for the activity
+	 * @param endTime ending time for the activity
 	 */
 	public Activity(String title, String meetingDays, int startTime, int endTime) {
 		super();
@@ -170,11 +170,13 @@ public abstract class Activity {
 	
 	/**
 	 * Abstract method header to make sure this method is in both Course and Event
+	 * @return shortArray[]
 	 */
 	public abstract String[] getShortDisplayArray();
 	
 	/**
 	 * Abstract method header to make sure this method is in both Course and Event
+	 * @return longArray[]
 	 */
 	public abstract String[] getLongDisplayArray();
 
@@ -224,6 +226,8 @@ public abstract class Activity {
 	
 	/**
 	 * Abstract method header to make sure this method is in both Course and Event
+	 * @param activity the activity to compare against for duplication 
+	 * @return if the activity is a duplicate or not
 	 */
 	public abstract boolean isDuplicate(Activity activity);
 

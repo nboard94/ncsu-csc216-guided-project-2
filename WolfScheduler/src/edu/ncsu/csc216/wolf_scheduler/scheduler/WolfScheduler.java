@@ -103,15 +103,15 @@ public class WolfScheduler {
 	}
 
 
- /** adds event to the catalog as long as it isn't a duplicate
- * @param eventTitle
- * @param eventMeetingDays
- * @param eventStartTime
- * @param eventEndTime
- * @param eventWeeklyRepeat
- * @param eventDetails
+ /** adds event to the schedule as long as it isn't a duplicate
+ * @param eventTitle title of event to add to the schedule
+ * @param eventMeetingDays days the event to add to the schedule will meet
+ * @param eventStartTime stating time of event to add to the schedule
+ * @param eventEndTime ending time of event to add to the schedule
+ * @param eventWeeklyRepeat number of times the event will repeat
+ * @param eventDetails extra details about the event
  * @throws IllegalArgumentException if event is a duplicate
- * @return alse if event can't be added
+ * @return false if event can't be added
  */
 public boolean addEvent(String eventTitle, String eventMeetingDays, int eventStartTime, int eventEndTime,
 			int eventWeeklyRepeat, String eventDetails) {
@@ -144,7 +144,6 @@ public boolean addEvent(String eventTitle, String eventMeetingDays, int eventSta
 	/**Removes a course from a schedule
 	 * @param idx index of activity to remove in the schedule
 	 * @return true If event can be removed
-	 * @return false if event can't be removed
 	 */
 	public boolean removeActivity(int idx) {
 		if (!schedule.isEmpty() ) {

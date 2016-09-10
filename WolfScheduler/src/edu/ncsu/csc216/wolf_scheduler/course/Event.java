@@ -18,12 +18,12 @@ public class Event extends Activity {
 	private String eventDetails;
 	
 	/** Constructor for Event object with start and endtime
-	 * @param title
-	 * @param meetingDays
-	 * @param startTime
-	 * @param endTime
-	 * @param weeklyRepeat
-	 * @param eventDetails
+	 * @param title title of the event
+	 * @param meetingDays days the event will meet
+	 * @param startTime starting time of the event
+	 * @param endTime ending time of the event
+	 * @param weeklyRepeat number of times the event will repeat
+	 * @param eventDetails additional details for the event
 	 */
 	public Event(String title, String meetingDays, int startTime, int endTime, int weeklyRepeat, String eventDetails) {
 		super(title, meetingDays, startTime, endTime);
@@ -46,16 +46,16 @@ public class Event extends Activity {
 		this.meetingDays = meetingDays;
 	}
 	
-	/** returns the weeklyRepeat int
+	/** returns the weeklyRepeat integer
 	 * @return the weeklyRepeat
 	 */
 	public int getWeeklyRepeat() {
 		return weeklyRepeat;
 	}
 
-	/** sets the weekly repeat int, must be between 1-4
+	/** sets the weekly repeat integer, must be between 1-4
 	 * @param weeklyRepeat the weeklyRepeat to set
-	 * @throws IllegalArgumentException if invalid repeat int, not 1-4
+	 * @throws IllegalArgumentException if invalid repeat integer, not 1-4
 	 */
 	public void setWeeklyRepeat(int weeklyRepeat) {
 		if (weeklyRepeat < 1 || weeklyRepeat > 4) {
